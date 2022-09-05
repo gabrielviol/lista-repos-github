@@ -1,8 +1,23 @@
 import { MagnifyingGlass } from "phosphor-react";
-import { Container, ContainerRepos, ContainerSearch } from "./styles";
+import { useEffect, useState } from "react";
+import { Container, ContainerRepos, ContainerSearch, ContentRepos } from "./styles";
 
-export function Main(){
-    return(
+interface reposProps {
+    id: string,
+    name: string,
+    description: string,
+}
+
+export function Main() {
+    const [repos, setRepos] = useState<reposProps[]>([])
+
+    useEffect(() => {
+        fetch('https://api.github.com/users/gabrielviol/repos')
+            .then(response => response.json())
+            .then(data => setRepos(data))
+    }, [])
+
+    return (
         <Container>
             <ContainerSearch>
                 <input type="text" placeholder="Encontre um repositorio..." />
@@ -10,17 +25,22 @@ export function Main(){
             </ContainerSearch>
 
             <ContainerRepos>
-            <div>                
-                <a href="/">Repositório 1</a>
-            </div>
 
-            <div>                
-                <a href="/">Repositório 2</a>
-            </div>
+                {repos.map(repository => {
+                    return (
+                        <ContentRepos key={repository.id}>
+                            <div>
+                            <a href="/">{repository.name}</a>
+                            <span>{repository.description}</span>
+                            </div>
+                            <div>
+                                <span>Ultima atulização</span>
+                                <span>13/05/2022</span>
+                            </div>
+                        </ContentRepos>
+                    )
+                })}
 
-            <div>                
-                <a href="/">Repositório 3</a>
-            </div>
             </ContainerRepos>
         </Container>
     )

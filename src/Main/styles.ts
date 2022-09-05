@@ -36,12 +36,19 @@ export const ContainerRepos = styled.div`
     margin-top: 3rem;
     gap: 2rem;
 
-    div {
+`;
+
+export const ContentRepos = styled.div`
         display: flex;
+        justify-content: space-between;
         align-items: center;
         padding: 2rem;
         height: 100px;
-        border: 1px solid;
+        border: 1px solid #034188;
         border-radius: 1rem;
-    }
-`;
+
+        div {
+        display: flex;
+        flex-direction: column;
+        }
+`
