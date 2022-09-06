@@ -18,6 +18,6 @@ export const Content = styled.div`
         font-weight: bold;
         padding: 0 1.25rem;
         border-radius: 6px;
-        cursor: pointer;
+        cursor: default;
     }
 `

@@ -8,13 +8,12 @@ export const GlobalStyle = createGlobalStyle`
     }
     :focus {
             outline: 0;
-            box-shadow: 0 0 0 2px #C4C4CC;
+            box-shadow: 0 0 0 2px #3967e2;
     }
     body{
         background-color: #202024;
-        color: #E1E1E6;
+        color: #7596f1;
         -webkit-font-smoothing: antialiased;
-        border: 1px solid #341ca7;
     }
 
     body, input, textarea, button{

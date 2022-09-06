@@ -26,7 +26,6 @@ export const ContainerSearch = styled.div`
         
         svg{
             margin-left: -2rem;
-            cursor: pointer;
         }
 `;
 
@@ -44,11 +43,11 @@ export const ContentRepos = styled.div`
         align-items: center;
         padding: 2rem;
         height: 100px;
-        border: 1px solid #136469;
+        border: 1px solid #3967e2;
         border-radius: 1rem;
 
         a{
-            color: #0e555a;
+            color: #7596f1;
             font-size: 28px;
             text-decoration: none;
             border: none;
@@ -65,7 +64,7 @@ export const ContentRepos = styled.div`
         }
 
         span{
-            color: #0e555a;
+            color: #7596f1;
             font-size: 18px;            
         }
         p{

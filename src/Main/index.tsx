@@ -20,6 +20,8 @@ export function Main() {
             .then(data => setRepos(data))
     }, [])
 
+    const dateFormatter = new Intl.DateTimeFormat('pt-BR', { dateStyle:"medium" });
+
     const lowerSearch = search.toLocaleLowerCase();
 
     const filter = search.length > 0 ? repos.filter(repo => repo.name.toLowerCase().includes(lowerSearch)) : [];
@@ -48,7 +50,7 @@ export function Main() {
                                 </div>
                                 <div>
                                     <span>Ultima atulização</span>
-                                    <p>{repository.updated_at}</p>
+                                    <p>{dateFormatter.format(new Date(repository.updated_at))}</p>
                                 </div>
                             </ContentRepos>
                         )
@@ -65,7 +67,7 @@ export function Main() {
                                 </div>
                                 <div>
                                     <span>Ultima atulização</span>
-                                    <p>{repository.updated_at}</p>
+                                    <p>{dateFormatter.format(new Date(repository.updated_at))}</p>
                                 </div>
                             </ContentRepos>
                         )
