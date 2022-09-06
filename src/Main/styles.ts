@@ -44,11 +44,33 @@ export const ContentRepos = styled.div`
         align-items: center;
         padding: 2rem;
         height: 100px;
-        border: 1px solid #034188;
+        border: 1px solid #136469;
         border-radius: 1rem;
 
+        a{
+            color: #0e555a;
+            font-size: 28px;
+            text-decoration: none;
+            border: none;
+            outline: none;
+        }  
+        a:focus{
+            box-shadow: 0 0 0 0;
+            outline: 0;
+        }         
+
         div {
-        display: flex;
-        flex-direction: column;
+            display: flex;
+            flex-direction: column;
+        }
+
+        span{
+            color: #0e555a;
+            font-size: 18px;            
+        }
+        p{
+            color: #7d7d7d;
+            font-size: 15px;
+            margin-right: 10px;
         }
 `

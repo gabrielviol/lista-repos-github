@@ -6,6 +6,8 @@ interface reposProps {
     id: string,
     name: string,
     description: string,
+    updated_at: string,
+    html_url: string,
 }
 
 export function Main() {
@@ -20,7 +22,7 @@ export function Main() {
     return (
         <Container>
             <ContainerSearch>
-                <input type="text" placeholder="Encontre um repositorio..." />
+                <input type="text" placeholder="Encontre um repositorio..." onChange={handleInputChange}/>
                 <MagnifyingGlass size={24} />
             </ContainerSearch>
 
@@ -30,12 +32,12 @@ export function Main() {
                     return (
                         <ContentRepos key={repository.id}>
                             <div>
-                            <a href="/">{repository.name}</a>
-                            <span>{repository.description}</span>
+                                <a href={repository.html_url} target="_blank">{repository.name}</a>
+                                <p>{repository.description}</p>
                             </div>
                             <div>
                                 <span>Ultima atulização</span>
-                                <span>13/05/2022</span>
+                                <p>{repository.updated_at}</p>
                             </div>
                         </ContentRepos>
                     )
