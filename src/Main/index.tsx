@@ -19,6 +19,12 @@ export function Main() {
             .then(data => setRepos(data))
     }, [])
 
+    function handleInputChange(e){
+        e.preventDefault()
+        e.target.value()
+        console.log(e)
+    }
+
     return (
         <Container>
             <ContainerSearch>
