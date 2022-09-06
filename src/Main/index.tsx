@@ -6,7 +6,7 @@ interface reposProps {
     id: string,
     name: string,
     description: string,
-    updated_at: string,
+    pushed_at: string,
     html_url: string,
 }
 
@@ -25,6 +25,12 @@ export function Main() {
     const lowerSearch = search.toLocaleLowerCase();
 
     const filter = search.length > 0 ? repos.filter(repo => repo.name.toLowerCase().includes(lowerSearch)) : [];
+
+    const sortedPush = repos.sort((a, b) => {
+        return b.pushed_at.localeCompare(a.pushed_at);
+    })
+
+    console.log(sortedPush)
 
     return (
         <Container>
@@ -50,7 +56,7 @@ export function Main() {
                                 </div>
                                 <div>
                                     <span>Ultima atulização</span>
-                                    <p>{dateFormatter.format(new Date(repository.updated_at))}</p>
+                                    <p>{dateFormatter.format(new Date(repository.pushed_at))}</p>
                                 </div>
                             </ContentRepos>
                         )
@@ -67,7 +73,7 @@ export function Main() {
                                 </div>
                                 <div>
                                     <span>Ultima atulização</span>
-                                    <p>{dateFormatter.format(new Date(repository.updated_at))}</p>
+                                    <p>{dateFormatter.format(new Date(repository.pushed_at))}</p>
                                 </div>
                             </ContentRepos>
                         )
