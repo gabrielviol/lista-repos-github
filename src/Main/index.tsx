@@ -25,23 +25,27 @@ export function Main() {
 
     const lowerSearch = search.toLocaleLowerCase();
 
-    const filterSearch = search.length > 0 ? repos.filter(repo => repo.name.toLowerCase().includes(lowerSearch)) : [];
+    const filterSearch = search.length > 0 ? repos.filter(repo => repo.name.toLowerCase().includes(lowerSearch)) : repos;
 
     order === 'name' ?
-        filterSearch.sort((a, b) => { return a.name.localeCompare(b.name) }) && repos.sort((a, b) => { return a.name.localeCompare(b.name) }) :
-        filterSearch.sort((a, b) => { return b.pushed_at.localeCompare(a.pushed_at) }) && repos.sort((a, b) => { return b.pushed_at.localeCompare(a.pushed_at) });
+        filterSearch.sort((a, b) => { return a.name.localeCompare(b.name) }) :
+        filterSearch.sort((a, b) => { return b.pushed_at.localeCompare(a.pushed_at) });
+
 
     switch (filterType) {
-        case 'forks': repos.filter(repo => repo.fork > 0 ? console.log(repo) : '');
-        break
+        case 'forks': repos.filter(repo => repo.fork > 0 ? repo.fork : []);
+        break;
 
-        case 'archived': repos.filter(repo => repo.archived === true ? console.log(repo) : '');
-        break
+        case 'archived': repos.filter(repo => repo.archived === true ? console.log(repo) : []);
+        break;
 
-        case 'license': repos.filter(repo => repo.license = true ? console.log(repo) : '');
-        break      
+        case 'license': repos.filter(repo => repo.license = true ? console.log(repo) : []);
+        break;
+
+        default: filterSearch
+            break
     }
-    
+
 
     return (
         <Container>
@@ -68,9 +72,6 @@ export function Main() {
                 </div>
 
             </ContainerSearch>
-
-            {search.length > 0 ? (
-
                 <ContainerRepos>
                     {filterSearch.map(repository => {
                         return (
@@ -87,25 +88,6 @@ export function Main() {
                         )
                     })}
                 </ContainerRepos>
-            ) : (
-                <ContainerRepos>
-                    {repos.map(repository => {
-                        return (
-                            <ContentRepos key={repository.id}>
-                                <div>
-                                    <a href={repository.html_url} target="_blank">{repository.name}</a>
-                                    <p>{repository.description}</p>
-                                </div>
-                                <div>
-                                    <span>Ultima atulização</span>
-                                    <p>{dateFormatter.format(new Date(repository.pushed_at))}</p>
-                                </div>
-                            </ContentRepos>
-                        )
-                    })}
-                </ContainerRepos>
-            )}
-
         </Container>
     )
 }
