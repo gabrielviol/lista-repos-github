@@ -2,7 +2,7 @@
   "name": "lista-repos-github",
   "private": true,
   "version": "0.0.0",
-  "homepage": "./",
+  "homepage": "list-repos-github-page/",
   "type": "module",
   "scripts": {
     "dev": "vite",
