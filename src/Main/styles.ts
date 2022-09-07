@@ -17,6 +17,33 @@ export const ContainerSearch = styled.div`
         align-items: center;
     }
 
+    div:nth-child(2){
+        gap: 2rem;
+
+        button{
+            padding: 5px 15px;
+            border: 0;
+            border-radius: 10px;
+            background-color: #3967e2;
+            color: #b0c4ff;
+            cursor: pointer;
+        }
+        button:hover{
+            opacity: 0.7;
+            transition: 0.2;
+        }
+        button:focus{
+            border: 2px solid #121214;
+        }
+        select{
+            padding: 5px 15px;
+            border: 0;
+            border-radius: 10px;
+            background-color: #3967e2;
+            color: #b0c4ff;
+        }
+    }
+
     input {
         border-radius: 6px;
         border: 0;

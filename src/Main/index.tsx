@@ -8,6 +8,9 @@ interface reposProps {
     description: string,
     pushed_at: string,
     html_url: string,
+    fork: number,
+    license: object,
+    archived: boolean
 }
 
 export function Main() {
@@ -27,25 +30,18 @@ export function Main() {
 
     const filterSearch = search.length > 0 ? repos.filter(repo => repo.name.toLowerCase().includes(lowerSearch)) : repos;
 
+    const filterForType = 
+        filterType === 'forks' ? filterSearch.filter(repo => repo.fork > 0) : 
+        filterType === 'license' ? filterSearch.filter(repo => repo.license != null) : 
+        filterType === 'archived' ? filterSearch.filter(repo => repo.archived == true) : 
+        filterSearch
+
+
     order === 'name' ?
-        filterSearch.sort((a, b) => { return a.name.localeCompare(b.name) }) :
-        filterSearch.sort((a, b) => { return b.pushed_at.localeCompare(a.pushed_at) });
+    filterForType.sort((a, b) => { return a.name.localeCompare(b.name) }) :
+    filterForType.sort((a, b) => { return b.pushed_at.localeCompare(a.pushed_at) });
 
-
-    switch (filterType) {
-        case 'forks': repos.filter(repo => repo.fork > 0 ? repo.fork : []);
-        break;
-
-        case 'archived': repos.filter(repo => repo.archived === true ? console.log(repo) : []);
-        break;
-
-        case 'license': repos.filter(repo => repo.license = true ? console.log(repo) : []);
-        break;
-
-        default: filterSearch
-            break
-    }
-
+    console.log(repos.length)
 
     return (
         <Container>
@@ -63,7 +59,7 @@ export function Main() {
                     <button onClick={e => setOrder('date')}>Data</button>
 
                     <select name="filtro" id="filtro" onChange={e => setFilterType(e.target.value)} >
-                        <option>Filtrar</option>
+                        <option>Todos</option>
                         <option value="archived" >Arquivados</option>
                         <option value="license" >Com licença</option>
                         <option value="forks" >Forks</option>
@@ -73,7 +69,7 @@ export function Main() {
 
             </ContainerSearch>
                 <ContainerRepos>
-                    {filterSearch.map(repository => {
+                    {filterForType.map(repository => {
                         return (
                             <ContentRepos key={repository.id}>
                                 <div>
