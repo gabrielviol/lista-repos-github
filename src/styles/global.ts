@@ -20,3 +20,9 @@ export const GlobalStyle = createGlobalStyle`
         font: 400 1rem 'Roboto', sans-serif;
     }
 `
+
+// .color1 { #3967e2 };
+// .color2 { #577ee9 };
+// .color3 { #7596f1 };
+// .color4 { #92adf8 };
+// .color5 { #b0c4ff };
