@@ -66,8 +66,8 @@ export const ContainerRepos = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 3rem;
+    margin-bottom: 5rem;
     gap: 2rem;
-
 `;
 
 export const ContentRepos = styled.div`

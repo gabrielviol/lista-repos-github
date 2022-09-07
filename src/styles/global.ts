@@ -19,6 +19,19 @@ export const GlobalStyle = createGlobalStyle`
     body, input, textarea, button{
         font: 400 1rem 'Roboto', sans-serif;
     }
+
+        body::-webkit-scrollbar {
+    width: 12px;              
+    }
+
+    body::-webkit-scrollbar-track {
+    background: #9f9f9f;     
+    }
+
+    body::-webkit-scrollbar-thumb {
+    background-color: #2d2d2d;
+    border-radius: 20px;
+    }
 `
 
 // .color1 { #3967e2 };
