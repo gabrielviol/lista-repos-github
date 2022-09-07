@@ -10,23 +10,29 @@ export const Container = styled.main`
 export const ContainerSearch = styled.div`
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
-      input {
-            border-radius: 6px;
-            border: 0;
-            background: #121214;
-            color: #C4C4CC;
-            width: 25rem;
-            padding: 0.5rem;         
-            
-            &::placeholder {
-                color: #7C7C8A;
-            }
-        }
+    div{
+        display: flex;
+        align-items: center;
+    }
+
+    input {
+        border-radius: 6px;
+        border: 0;
+        background: #121214;
+        color: #C4C4CC;
+        width: 25rem;
+        padding: 0.5rem;         
         
-        svg{
-            margin-left: -2rem;
+        &::placeholder {
+            color: #7C7C8A;
         }
+    }
+    
+    svg{
+        margin-left: -2rem;
+    }
 `;
 
 export const ContainerRepos = styled.div`
